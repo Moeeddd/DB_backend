@@ -1,11 +1,12 @@
 const express = require("express");
 const cors = require("cors");
 require("dotenv").config();
-const listEndpoints = require("express-list-endpoints");
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+  origin: "https://db-frontend-rho.vercel.app"
+}));
 app.use(express.json());
 
 app.get("/", (req, res) => {
@@ -25,7 +26,4 @@ console.log("Loaded PORT:", PORT);
 
 app.listen(PORT, () => {
   console.log("Server running on port " + PORT);
-
-  console.log("Available APIs:");
-  console.table(listEndpoints(app));
 });
