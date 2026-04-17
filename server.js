@@ -5,7 +5,9 @@ const listEndpoints = require("express-list-endpoints");
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+  origin: "https://db-frontend-rho.vercel.app"  
+));
 app.use(express.json());
 
 app.get("/", (req, res) => {
